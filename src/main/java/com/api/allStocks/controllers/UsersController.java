@@ -1,7 +1,7 @@
 package com.api.allStocks.controllers;
 
 import com.api.allStocks.models.UsersModel;
-import com.api.allStocks.services.UsersServices;
+import com.api.allStocks.services.UsersService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UsersController {
 
-    UsersServices service;
+    UsersService service;
 
-    public UsersController(UsersServices service) {
+    public UsersController(UsersService service) {
         this.service = service;
     }
 

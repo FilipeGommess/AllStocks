@@ -1,16 +1,16 @@
 package com.api.allStocks.services;
 
 import com.api.allStocks.models.UsersModel;
-import com.api.allStocks.respositories.UsersRepositories;
+import com.api.allStocks.respositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsersServices {
+public class UsersService {
 
     @Autowired
-    UsersRepositories repository;
+    UsersRepository repository;
 
 
 
