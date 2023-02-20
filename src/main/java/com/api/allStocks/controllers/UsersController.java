@@ -1,26 +1,24 @@
 package com.api.allStocks.controllers;
 
+import com.api.allStocks.models.UsersModel;
 import com.api.allStocks.services.UsersServices;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 @SpringBootApplication
 @RestController
-public class UsersControllers {
+public class UsersController {
 
-    UsersServices service = new UsersServices();
+    UsersServices service;
 
-    public UsersControllers (UsersServices service) {
+    public UsersController(UsersServices service) {
         this.service = service;
     }
 
 
    @PostMapping("/createuser")
-    public String createUser() {
-        return service.createUser();
+    public UsersModel createUser(@RequestBody UsersModel user) {
+        return service.createUser(user);
     }
 
 

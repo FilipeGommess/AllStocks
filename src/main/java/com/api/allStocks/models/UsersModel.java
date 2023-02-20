@@ -51,4 +51,11 @@ public class UsersModel implements Serializable {
     public void setSend_email(Boolean send_email) {
         this.send_email = send_email;
     }
+
+    public UsersModel(String name, String email) {
+        this.name = name;
+        this.email = email;
+        this.send_email = false;
+    }
+
 }
