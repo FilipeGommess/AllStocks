@@ -20,6 +20,9 @@ public class UsersModel implements Serializable {
     @Column(nullable = false)
     private Boolean send_email;
 
+    @Column(nullable = false, unique = true)
+    private String password;
+
     public long getId() {
         return id;
     }
@@ -52,10 +55,19 @@ public class UsersModel implements Serializable {
         this.send_email = send_email;
     }
 
-    public UsersModel(String name, String email) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UsersModel(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.send_email = false;
+        this.password = password;
     }
 
 }
