@@ -10,9 +10,4 @@ public class AllStocksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AllStocksApplication.class, args);
 	}
-
-	@GetMapping("/")
-	public String index() {
-		return "asa";
-	}
 }
