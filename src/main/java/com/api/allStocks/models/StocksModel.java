@@ -16,7 +16,7 @@ public class StocksModel implements Serializable {
     private String name;
 
     @Column(nullable = false, unique = true, length = 6)
-    private String code;
+    private String stock;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -47,12 +47,12 @@ public class StocksModel implements Serializable {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public String getStock() {
+        return stock;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setStock(String stock) {
+        this.stock = stock;
     }
 
     public StocksModel getSectorId() {
