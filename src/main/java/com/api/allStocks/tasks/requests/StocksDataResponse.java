@@ -7,13 +7,13 @@ public class StocksDataResponse {
     float close;
     String logo;
     String sector;
-    float change;
+    double change;
 
     public String getName() { return name; }
     public String getStock() { return stock; }
     public float getClose() { return close; }
     public String getLogo() { return logo; }
     public String getSector() { return sector; }
-    public float change() { return change; }
+    public double getChange() { return change; }
 
 }

@@ -13,7 +13,7 @@ public class SectorsModel implements Serializable {
     private long id;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String name;
+    private String sector;
 
     public long getId() {
         return id;
@@ -23,11 +23,11 @@ public class SectorsModel implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getSector() {
+        return sector;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSector(String sector) {
+        this.sector = sector;
     }
 }

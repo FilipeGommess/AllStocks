@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -42,23 +41,45 @@ public class UsersController {
 
     @GetMapping("/teste")
     public List idonto() {
-        List<String> teste = stocksRepository.getStocksName();
-
-
-
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl = "https://brapi.dev/api/quote/list";
         StocksArrayDataResponse stocks = restTemplate.getForObject(fooResourceUrl, StocksArrayDataResponse.class);
 
+        List<String> allSectorsNames = sectorsRepository.getSectorsName();
+        List<String> allStocksNames = stocksRepository.getStocksName();
         for (int n = 0; n < stocks.getStocks().toArray().length; n++) {
-            List<String> allSectorsName = sectorsRepository.getSectorsName();
+
+
             StocksDataResponse stocksObject = (StocksDataResponse) Array.get(stocks.getStocks().toArray(), n);
 
-            if (!allSectorsName.contains(stocksObject.getSector()) && stocksObject.getSector() != null) {
-
+            if (!allSectorsNames.contains(stocksObject.getSector()) && stocksObject.getSector() != null) {
                 SectorsModel newSector = new SectorsModel();
-                newSector.setName(stocksObject.getSector());
+                newSector.setSector(stocksObject.getSector());
                 sectorsRepository.save(newSector);
+                allSectorsNames = sectorsRepository.getSectorsName();
+            }
+
+            if (!allStocksNames.contains(stocksObject.getName())) {
+                SectorsModel sectorInStock = new SectorsModel();
+
+                if (stocksObject.getSector() == null) {
+                    sectorInStock.setSector("Outros");
+                    sectorInStock.setId(sectorsRepository.getSectorIdByName("Outros"));
+                }  else {
+                    sectorInStock.setSector(stocksObject.getSector());
+                    sectorInStock.setId(sectorsRepository.getSectorIdByName(stocksObject.getSector()));
+                }
+
+                StocksModel newStock = new StocksModel();
+                newStock.setName(stocksObject.getName());
+                newStock.setStock(stocksObject.getStock());
+                newStock.setVariation(stocksObject.getChange());
+                newStock.setLogo(stocksObject.getLogo());
+                newStock.setClose(stocksObject.getClose());
+                newStock.setSector(sectorInStock);
+                stocksRepository.save(newStock);
+
+                allStocksNames = stocksRepository.getStocksName();
             }
 
         }

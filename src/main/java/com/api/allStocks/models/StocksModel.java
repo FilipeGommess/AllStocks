@@ -15,21 +15,20 @@ public class StocksModel implements Serializable {
     @Column(nullable = false, unique = true, length = 254)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 6)
+    @Column(nullable = false, unique = true, length = 8)
     private String stock;
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private StocksModel sector;
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private SectorsModel sector;
 
     @Column(nullable = false)
     private float close;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 254)
     private String logo;
 
     @Column(nullable = false)
-    private float variation;
+    private double variation;
 
     public long getId() {
         return id;
@@ -55,11 +54,11 @@ public class StocksModel implements Serializable {
         this.stock = stock;
     }
 
-    public StocksModel getSectorId() {
+    public SectorsModel getSector() {
         return sector;
     }
 
-    public void setSectorId(StocksModel sector) {
+    public void setSector(SectorsModel sector) {
         this.sector = sector;
     }
 
@@ -79,11 +78,11 @@ public class StocksModel implements Serializable {
         this.logo = logo;
     }
 
-    public float getChange() {
+    public double getVariation() {
         return variation;
     }
 
-    public void setChange(float change) {
+    public void setVariation(double variation) {
         this.variation = variation;
     }
 }

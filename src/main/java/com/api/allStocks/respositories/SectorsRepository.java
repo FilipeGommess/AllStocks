@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface SectorsRepository extends JpaRepository<SectorsModel, Long> {
 
-    @Query("SELECT name FROM SectorsModel")
+    @Query("SELECT sector FROM SectorsModel")
     List<String> getSectorsName();
+
+    @Query(value = "SELECT id FROM sectors WHERE sectors.sector = ?1", nativeQuery = true)
+    int getSectorIdByName(String sector);
 }
