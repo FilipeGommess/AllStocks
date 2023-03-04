@@ -13,7 +13,10 @@ public class StocksDataResponse {
     public String getStock() { return stock; }
     public float getClose() { return close; }
     public String getLogo() { return logo; }
-    public String getSector() { return sector; }
+    public String getSector() {
+        if (sector == null) { sector = "Outros"; }
+        return sector;
+    }
     public double getChange() { return change; }
 
 }

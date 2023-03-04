@@ -18,7 +18,7 @@ public class StocksModel implements Serializable {
     @Column(nullable = false, unique = true, length = 8)
     private String stock;
 
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne(cascade=CascadeType.MERGE)
     private SectorsModel sector;
 
     @Column(nullable = false)
