@@ -5,6 +5,8 @@ import com.api.allStocks.respositories.StocksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StocksService {
 
@@ -33,6 +35,10 @@ public class StocksService {
     public String deleteStock(long id) {
         repository.deleteById(id);
         return "Deletado";
+    }
+
+    public List<StocksModel> getAllStocks() {
+        return repository.getAllStocks();
     }
 
 

@@ -11,4 +11,7 @@ public interface StocksRepository extends JpaRepository<StocksModel, Long> {
     @Query("SELECT name FROM StocksModel")
     List<String> getStocksName();
 
+    @Query(value = "SELECT * FROM stocks", nativeQuery = true)
+    List<StocksModel> getAllStocks();
+
 }

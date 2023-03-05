@@ -8,6 +8,8 @@ import java.io.Serializable;
 @Table(name = "stocks")
 public class StocksModel implements Serializable {
 
+    public StocksModel(){};
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
