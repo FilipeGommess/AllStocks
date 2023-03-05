@@ -30,5 +30,10 @@ public class StocksService {
         });
     }
 
+    public String deleteStock(long id) {
+        repository.deleteById(id);
+        return "Deletado";
+    }
+
 
 }

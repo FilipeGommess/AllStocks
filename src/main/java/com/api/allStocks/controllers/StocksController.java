@@ -24,4 +24,10 @@ public class StocksController {
     public StocksModel putStock(@RequestBody StocksModel newStock, @PathVariable long id){
         return services.putStock(newStock, id);
     }
+
+    @DeleteMapping("/stock/{id}")
+    public String deleteStock(@PathVariable long id) {
+        return services.deleteStock(id);
+    }
+
 }
