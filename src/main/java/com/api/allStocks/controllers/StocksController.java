@@ -5,10 +5,7 @@ import com.api.allStocks.services.StocksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
@@ -21,5 +18,10 @@ public class StocksController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public StocksModel postStock(@RequestBody StocksModel newStock) {
         return services.postStock(newStock);
+    }
+
+    @PutMapping("/stock/{id}")
+    public StocksModel putStock(@RequestBody StocksModel newStock, @PathVariable long id){
+        return services.putStock(newStock, id);
     }
 }

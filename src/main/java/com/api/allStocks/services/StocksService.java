@@ -16,4 +16,19 @@ public class StocksService {
         return  newStock;
     }
 
+    public StocksModel putStock(StocksModel newStock, long id) {
+        return repository.findById(id).map(stock -> {
+            stock.setName(newStock.getName());
+            stock.setStock(newStock.getStock());
+            stock.setVariation(newStock.getVariation());
+            stock.setClose(newStock.getClose());
+            stock.setLogo(newStock.getLogo());
+            return repository.save(stock);
+        }).orElseGet(() -> {
+            newStock.setId(id);
+            return repository.save(newStock);
+        });
+    }
+
+
 }

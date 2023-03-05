@@ -28,7 +28,6 @@ public class UsersService {
     }
 
     public UsersModel putUser(UsersModel newUser, long id) {
-        System.out.println(repository.findById(id));
         return repository.findById(id).map(user -> {
             user.setName(newUser.getName());
             user.setEmail(newUser.getEmail());
