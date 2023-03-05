@@ -1,13 +1,13 @@
 package com.api.allStocks.controllers;
 
 import com.api.allStocks.models.UsersModel;
-import com.api.allStocks.respositories.SectorsRepository;
-import com.api.allStocks.respositories.StocksRepository;
 import com.api.allStocks.services.UsersService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @SpringBootApplication
 @RestController
 public class UsersController {
@@ -35,6 +35,9 @@ public class UsersController {
         return service.deleteUser(id);
     }
 
-
+    @GetMapping("/user")
+    public List<UsersModel> getAllUsers() {
+        return service.getAllUsers();
+    }
 
 }

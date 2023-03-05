@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UsersService {
@@ -44,4 +46,7 @@ public class UsersService {
         return "Deletado";
     }
 
+    public List<UsersModel> getAllUsers() {
+        return repository.getAllUsers();
+    }
 }
