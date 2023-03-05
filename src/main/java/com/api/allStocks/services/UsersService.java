@@ -3,6 +3,7 @@ package com.api.allStocks.services;
 import com.api.allStocks.models.UsersModel;
 import com.api.allStocks.respositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,9 @@ public class UsersService {
         });
     }
 
+    public String deleteUser(long id) {
+        repository.deleteById(id);
+        return "Deletado";
+    }
 
 }
