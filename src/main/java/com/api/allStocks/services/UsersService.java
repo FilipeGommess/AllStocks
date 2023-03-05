@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UsersService {
 
@@ -22,6 +23,19 @@ public class UsersService {
 
         repository.save(user);
         return user;
+    }
+
+    public UsersModel putUser(UsersModel newUser, long id) {
+        System.out.println(repository.findById(id));
+        return repository.findById(id).map(user -> {
+            user.setName(newUser.getName());
+            user.setEmail(newUser.getEmail());
+            user.setSend_email(newUser.getSend_email());
+            return repository.save(user);
+        }).orElseGet(() -> {
+            newUser.setId(id);
+            return repository.save(newUser);
+        });
     }
 
 

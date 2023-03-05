@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "users")
 public class UsersModel implements Serializable {
-
+    public UsersModel() {}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
